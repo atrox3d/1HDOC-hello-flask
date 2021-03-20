@@ -5,6 +5,24 @@ app = config.get_app_singletone(__name__)
 print("     START route definitions")
 
 
+def bold(function):
+    def wrapper():
+        return "<b>" + function() + "</b>"
+    return wrapper
+
+
+def em(function):
+    def wrapper():
+        return "<em>" + function() + "</em>"
+    return wrapper
+
+
+def underline(function):
+    def wrapper():
+        return "<u>" + function() + "</u>"
+    return wrapper
+
+
 # http://192.168.1.10:5000/
 @app.route('/')
 def hello_world():
@@ -15,6 +33,9 @@ def hello_world():
 
 # http://192.168.1.10:5000/bye
 @app.route('/bye')
+@bold
+@em
+@underline
 def bye():
     return "bye!"
 
