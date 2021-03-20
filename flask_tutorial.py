@@ -1,6 +1,7 @@
-print(" from hello import app")
-from hello import app
-
+import config
+# print(" from hello import app")
+# from hello import app
+app = config.get_app_singletone(__name__)
 print("     START route definitions")
 
 
