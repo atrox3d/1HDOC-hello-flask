@@ -8,7 +8,9 @@ print("     START route definitions")
 # http://192.168.1.10:5000/
 @app.route('/')
 def hello_world():
-    return "hello, world!"
+    return '<h1 style="text-align:center">hello, world!</h1>' \
+           '<p>helloooooooooooooooo</p>' \
+           '<img width="200" src="https://media1.tenor.com/images/a52c4d90765b8a123712cdb6164e79f7/tenor.gif?itemid=17800101">'
 
 
 # http://192.168.1.10:5000/bye
