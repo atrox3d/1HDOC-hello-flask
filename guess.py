@@ -2,6 +2,7 @@ from flask import Flask
 import random
 import config
 import logging
+import functools
 
 logger = logging.getLogger(__name__)
 
@@ -9,18 +10,18 @@ random_number = random.randint(0, 9)
 logger.info(f"the randon number is: {random_number}")
 
 app = Flask(__name__)
-logging.info(f'app = {app}')
+logger.info(f'app = {app}')
 
 
 def logdecorator(f):
+    @functools.wraps(f)
     def wrap(*args, **kwargs):
         logger.info(f"LOGDECORATOR: {f.__name__}({args}, {kwargs})")
-        return f()
+        return f(*args, **kwargs)
 
     return wrap
 
 
-# @logdecorator
 @app.route('/')
 @logdecorator
 def home():
@@ -34,6 +35,7 @@ def home():
 
 
 @app.route("/<int:guess>")
+@logdecorator
 def guess_number(guess):
     if guess > random_number:
         return "<h1 style='color: purple'>Too high, try again!</h1>" \
