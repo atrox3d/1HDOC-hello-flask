@@ -1,8 +1,11 @@
 import config
 import pprint
+import logging
+
+logger = logging.getLogger(__name__)
 
 app = config.get_app_singletone(__name__)
-print("import flask_tutorial")
+logger.info("import flask_tutorial")
 
 import flask_tutorial
 
@@ -13,8 +16,8 @@ def url_map():
 
 
 if __name__ == "__main__":
-    print(f'if {__name__} == "__main__":')
-    print(app.url_map)
-    print(f"app.run(host={config.HOST_IP}, debug=True)")
+    logger.info(f'if {__name__} == "__main__":')
+    logger.info(app.url_map)
+    logger.info(f"app.run(host={config.HOST_IP}, debug=True)")
     app.run(host=config.HOST_IP, debug=True)
-    print("-" * 80)
+    logger.info("-" * 80)
