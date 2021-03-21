@@ -1,8 +1,11 @@
 import config
-# print(" from hello import app")
+import logging
+
+logger = logging.getLogger(__name__)
+# logger.info(" from hello import app")
 # from hello import app
 app = config.get_app_singletone(__name__)
-print("     START route definitions")
+logger.info("     START route definitions")
 
 
 def bold(function):
@@ -64,4 +67,4 @@ def variables(name, number):
     return f"{name}, {number}"
 
 
-print("     END route definitions")
+logger.info("     END route definitions")
