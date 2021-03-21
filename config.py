@@ -8,7 +8,7 @@ def get_rootlogger():
     logger.setLevel(logging.DEBUG)
     levelname = logging.getLevelName(logger.getEffectiveLevel())
     handler = logging.StreamHandler(stream=sys.stdout)
-    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)-8s | %(name)-40s | %(message)s'))
+    handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)-8s | %(name)-20s | %(message)s'))
     logger.addHandler(handler)
     logger.info(f"Created root logger in module {__name__} with level {levelname}")
     return logger
