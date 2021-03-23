@@ -1,6 +1,7 @@
 import logging
 import sys
 from flask import Flask
+import socket
 
 
 def get_rootlogger():
@@ -16,7 +17,8 @@ def get_rootlogger():
 
 rootlogger: logging.Logger = get_rootlogger()
 
-HOST_IP = "192.168.1.10"
+# HOST_IP = "192.168.1.10"
+HOST_IP = socket.gethostbyname(socket.gethostname())
 rootlogger.info(f"HOST_IP = {HOST_IP}")
 
 _app = None
